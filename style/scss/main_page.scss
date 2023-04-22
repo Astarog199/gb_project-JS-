@@ -1,0 +1,33 @@
+$color_orange: #FF9401;
+
+.content {}
+
+.wrapped_products {
+    display: flex;
+}
+
+.Filter {
+    width: 250px;
+}
+
+/* Каталог товаров */
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+
+    .product-item {
+        width: 200px;
+    }
+
+    .card_pictures {
+        width: 150px;
+    }
+}
+
+.product-item:hover .card-pictures {
+    transition: 0.5s; //Время эффекта 
+    transform: scale(1.1); //Увеличиваем масштаб 
+}
+
+@media(max-width: 1024px) {}

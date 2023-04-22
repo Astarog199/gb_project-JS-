@@ -1,0 +1,32 @@
+@charset "UTF-8";
+.wrapped_products {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.Filter {
+  width: 250px;
+}
+
+/* Каталог товаров */
+.products {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.products .product-item {
+  width: 200px;
+}
+.products .card_pictures {
+  width: 150px;
+}
+
+.product-item:hover .card-pictures {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}

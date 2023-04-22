@@ -1,0 +1,15 @@
+/*  подвал */
+
+.footer {
+    background-color: #e95353;
+    display: flex;
+    justify-content: center;
+    height: 140px;
+    width: 100%;
+}
+
+.wrapped_footer {
+    display: flex;
+    justify-content: flex-start;
+
+}

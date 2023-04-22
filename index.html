@@ -1,16 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Интернет-магазин</title>
+    <link rel="stylesheet" href="style/css/style.css">
 </head>
+
 <body>
-<header>
-    <button class="btn-cart" type="button">Крзина</button>
-</header>
-<main>
-    <div class="products"></div>
-</main>
-<script src="./js/main.js"></script>
+    <div class="container">
+        <header class="header ">
+            <div class="wrapped indent">
+                <a class="logo" href="index.html">f.palace</a>
+
+                <div class="rightHeader">
+                    <img class="bars" src="style/pictures/bars.png" alt="bars">
+                    <img class="cabinet_btn" src="style/pictures/user.png" alt="user">
+                    <span class="cartIconWrap">
+                        <img class="cartIcon" src="style/pictures/cart.png" alt="cart">
+                        <span>0</span>
+                    </span>
+
+                    <div class="basket hidden">
+                        <div class="basketRow basketHeader">
+                            <div>Название товара</div>
+                            <div>Количество</div>
+                            <div>Цена за шт.</div>
+                            <div>Итого</div>
+                        </div>
+
+                        <div class="basketTotal">
+                            Товаров в корзине на сумму:
+                            $<span class="basketTotalValue">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <img src="/style/pictures/Notebook.jpg" alt="">
+
+        <main class="content indent">
+            <!-- каталог товаров -->
+            <div class="products"></div>
+        </main>
+
+        <footer class="footer">
+            <div class="wrapped_footer indent">
+
+                <p>footer</p>
+            </div>
+        </footer>
+    </div>
+    <!-- каталог товаров -->
+    <script src="./js/main.js"></script>
 </body>
+
 </html>

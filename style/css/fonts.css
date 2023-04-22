@@ -1,0 +1,21 @@
+.logo {
+  font-family: "Playfair Display";
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 30px;
+  color: white;
+  text-decoration: none;
+}
+.logo::before {
+  content: url(../pictures/logo.png);
+  width: 25px;
+  height: 25px;
+}
+
+.but_message {
+  height: 25px;
+}
+
+.cabinet_btn {
+  height: 20px;
+}
