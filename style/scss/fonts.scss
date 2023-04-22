@@ -1,0 +1,29 @@
+// logotip
+.logo {
+    font-family: 'Playfair Display';
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 30px;
+    color: white;
+    text-decoration: none;
+
+    &::before {
+        content: url(../pictures/logo.png);
+        width: 25px;
+        height: 25px;
+    }
+}
+
+// кнопки
+
+//чат
+.but_message {
+    height: 25px;
+}
+
+//личный кабинет
+.cabinet_btn {
+    height: 20px;
+}
+
+// шрифты
