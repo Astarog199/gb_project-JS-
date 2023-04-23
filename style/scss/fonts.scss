@@ -2,16 +2,10 @@
 .logo {
     font-family: 'Playfair Display';
     font-weight: 700;
-    font-size: 22px;
+    font-size: 25px;
     line-height: 30px;
-    color: white;
+    color: black;
     text-decoration: none;
-
-    &::before {
-        content: url(../pictures/logo.png);
-        width: 25px;
-        height: 25px;
-    }
 }
 
 // кнопки

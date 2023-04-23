@@ -1,23 +1,22 @@
 const products = [
-  { id: 1, foto: 'img src="style/pictures/Notebook.jpg"', title: 'Notebook', price: 1000 },
-  { id: 2, foto: 'img src="style/pictures/Notebook.jpg"', title: 'Mouse', price: 100 },
-  { id: 3, foto: 'img src="style/pictures/Notebook.jpg"', title: 'Keyboard', price: 250 },
-  { id: 4, foto: 'img src="style/pictures/Notebook.jpg"', title: 'Gamepad', price: 150 },
+  { id: 1, foto: 'img src="style/pictures/catalog/AppleEarPods(1).jpg"', title: 'Apple BYZ S852I', price: 2927 },
+  { id: 2, foto: 'img src="style/pictures/catalog/AppleEarPods(3).jpg"', title: 'Apple EarPods', price: 100 },
+  { id: 3, foto: 'img src="style/pictures/catalog/AppleEarPods(2).jpg"', title: 'Apple EarPods', price: 2327 },
+  { id: 4, foto: 'img src="style/pictures/catalog/AppleEarPods(1).jpg"', title: 'Apple BYZ S852I', price: 3527 },
+  { id: 5, foto: 'img src="style/pictures/catalog/AppleEarPods(3).jpg"', title: 'Apple EarPods', price: 232 },
+  { id: 6, foto: 'img src="style/pictures/catalog/AppleEarPods(2).jpg"', title: 'Apple EarPods', price: 2327 },
 ];
 
-const renderProduct = (foto, title, price) => {
-  return `<div class="product-item">
-            <img class="card_pictures" ${foto} alt="товар">
-            <h3>${title}</h3>
-            <p>${price}</p>
+const renderProduct = (item) => `<div class="product-item">
+            <img class="card_pictures" ${item.foto} alt="товар">
+            <h3>${item.title} <span>${item.price} ₸</span></h3>
+            
             <button class="by-btn">Добавить</button>
           </div>`;
-};
+
 
 const renderProducts = list => {
-  const productList = list.map(item => renderProduct(item.foto, item.title, "price: " + item.price + '$'));
-  console.log(productList);
-  document.querySelector('.products').innerHTML = productList.join();
+  document.querySelector('.products').insertAdjacentHTML('beforeend', list.map(item => renderProduct(item)).join(''));
 };
 
 renderProducts(products);

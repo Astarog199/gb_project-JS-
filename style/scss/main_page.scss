@@ -1,13 +1,44 @@
 $color_orange: #FF9401;
 
-.content {}
+.content {
+
+    background: #EAEAEA;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .wrapped_products {
     display: flex;
 }
 
-.Filter {
-    width: 250px;
+
+.wrapped_banner {
+    height: 197px;
+    min-width: 1110px;
+    border-radius: 30px;
+    background: #101010;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+}
+
+.banner {
+    /* растягиваем картинку по размерам блока родителя */
+    width: 100%;
+    height: 100%;
+    padding: 60px;
+    flex-grow: 1;
+    background-repeat: no-repeat;
+    background-position: center -49px;
+    background-image: url(../pictures/iPhone-13-Pro-Max-silver-banner.png);
+
+    .text_banner {
+        font-weight: 600;
+        font-size: 30px;
+        line-height: 37px;
+
+        color: #FFFFFF;
+    }
 }
 
 /* Каталог товаров */
@@ -17,11 +48,20 @@ $color_orange: #FF9401;
     flex-wrap: wrap;
 
     .product-item {
-        width: 200px;
+        margin: 15px;
+        width: 350px;
+        height: 400px;
+        background: #FFFFFF;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
     }
 
     .card_pictures {
-        width: 150px;
+        width: 219px;
     }
 }
 
@@ -30,4 +70,4 @@ $color_orange: #FF9401;
     transform: scale(1.1); //Увеличиваем масштаб 
 }
 
-@media(max-width: 1024px) {}
+@media(max-width: 430px) {}

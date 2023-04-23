@@ -1,15 +1,53 @@
 /*  шапка сайта */
 .header {
-    background-color: #e95353;
+    background-color: #EAEAEA;
     display: flex;
     justify-content: center;
-    height: 150px;
+    height: 60px;
     width: 100%;
-
 }
 
 .wrapped {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
+}
+
+.rightHeader {
+    position: relative;
+}
+
+.menuIcon {
+    display: none;
+}
+
+.IconWrap {
+    position: relative;
+    cursor: pointer;
+}
+
+.IconWrap span {
+    display: inline-block;
+    width: 17.4px;
+    height: 17.4px;
+    color: white;
+    background: #FFA542;
+    border-radius: 50%;
+    position: absolute;
+    text-align: center;
+    right: -7px;
+    top: -14px;
+    font-size: 12px;
+    line-height: 19px;
+}
+
+@media(max-width: 430px) {
+    .like_list {
+        display: none;
+    }
+
+    .menu {
+        display: block;
+    }
 }
