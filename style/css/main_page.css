@@ -53,11 +53,15 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
 .products .product-item {
   margin: 15px;
+  padding: 20px;
   width: 350px;
   height: 400px;
   background: #FFFFFF;
@@ -74,17 +78,24 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 .products .card_pictures {
   width: 219px;
+  margin: auto;
 }
 
-.product-item:hover .card-pictures {
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+.like {
+  overflow: hidden;
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.dont {
+  background-image: url(../pictures/not_like.jpg);
+}
+
+.be {
+  background-image: url(../pictures/be_like.jpg);
 }
