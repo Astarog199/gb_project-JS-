@@ -1,22 +1,53 @@
-const products = [
-  { id: 1, foto: 'img src="style/pictures/catalog/AppleEarPods(1).jpg"', title: 'Apple BYZ S852I', price: 2927 },
-  { id: 2, foto: 'img src="style/pictures/catalog/AppleEarPods(3).jpg"', title: 'Apple EarPods', price: 100 },
-  { id: 3, foto: 'img src="style/pictures/catalog/AppleEarPods(2).jpg"', title: 'Apple EarPods', price: 2327 },
-  { id: 4, foto: 'img src="style/pictures/catalog/AppleEarPods(1).jpg"', title: 'Apple BYZ S852I', price: 3527 },
-  { id: 5, foto: 'img src="style/pictures/catalog/AppleEarPods(3).jpg"', title: 'Apple EarPods', price: 232 },
-  { id: 6, foto: 'img src="style/pictures/catalog/AppleEarPods(2).jpg"', title: 'Apple EarPods', price: 2327 },
-];
+class ProductList {
+  constructor(container = '.products') {
+    this.container = container;
+    this._goods = [];
+    this._allProducts = [];
 
-const renderProduct = (item) => `<div class="product-item">
-            <img class="card_pictures" ${item.foto} alt="товар">
-            <h3>${item.title} <span>${item.price} ₸</span></h3>
-            
-            <button class="by-btn">Добавить</button>
+    this._fetchGoods();
+    this._render();
+  }
+
+  _fetchGoods() {
+    this.#goods = [
+      { id: 1, foto: 'img src="style/pictures/catalog/AppleEarPods(1).jpg"', title: 'Apple BYZ S852I', price: 2927 },
+      { id: 2, foto: 'img src="style/pictures/catalog/AppleEarPods(3).jpg"', title: 'Apple EarPods', price: 100 },
+      { id: 3, foto: 'img src="style/pictures/catalog/AppleEarPods(2).jpg"', title: 'Apple EarPods', price: 2327 },
+      { id: 4, foto: 'img src="style/pictures/catalog/AppleEarPods(1).jpg"', title: 'Apple BYZ S852I', price: 3527 },
+      { id: 5, foto: 'img src="style/pictures/catalog/AppleEarPods(3).jpg"', title: 'Apple EarPods', price: 232 },
+      { id: 6, foto: 'img src="style/pictures/catalog/AppleEarPods(2).jpg"', title: 'Apple EarPods', price: 2327 },
+    ];
+  }
+
+  _render() {
+    const block = document.querySelector(this.container);
+
+    for (let product of this._goods) {
+      const productObject = new ProductItem(product);
+
+      this._allProducts.push(productObject);
+      block.insertAdjacentHTML('beforeend', productObject.render());
+    }
+  }
+}
+
+class ProductItem {
+  constructor(product) {
+    this.title = product.title;
+    this.price = product.price;
+    this.id = product.id;
+    this.foto = product.foto;
+  }
+
+  render() {
+    return `<div class="product-item" data-id="${this.id}">
+    <img class="card_pictures" ${this.foto} alt="товар">
+              <div class="desc">
+              <h3>${this.title} <span>${this.price} ₸</span></h3>
+                  <button class="buy-btn">Купить</button>
+              </div>
           </div>`;
+  }
+}
 
-
-const renderProducts = list => {
-  document.querySelector('.products').insertAdjacentHTML('beforeend', list.map(item => renderProduct(item)).join(''));
-};
-
-renderProducts(products);
+const list = new ProductList();
