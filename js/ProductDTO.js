@@ -20,7 +20,7 @@ class ProductList {
   }
 
   /**
-   * метод перебирает массив товаров и добавляет в 
+   * метод перебирает массив товаров и добавляет  на страницу
    */
   _render() {
     const block = document.querySelector(this.container);
@@ -31,6 +31,8 @@ class ProductList {
       block.insertAdjacentHTML('beforeend', productObject.render()); //добавляет экземпляр на страницу
     }
   }
+
+
 }
 
 class ProductItem {
@@ -50,12 +52,40 @@ class ProductItem {
     <div class="dont like"></div>
     <img class="card_pictures" ${this.foto} alt="товар">
               <div class="desc">
-              <h3>${this.title} <span>${this.price} ₸</span></h3>
+              <h3 class = "item_title">${this.title} </h3> <span class = "item_price">${this.price} </span> ₸
                   <button data-productId="${this.id}" class="buy-btn">Купить</button>
               </div>
           </div>`;
   }
 }
+
+
+class Cart_List extends ProductItem {
+  constructor(title, price, id, foto) {
+
+    this.myfunc()
+    this.calculateAndRenderTotalBasketSum()
+  }
+  myfunc() {
+    console.log(this.title);
+    console.log(this.price);
+  }
+
+  /**
+* Функция пересчитывает общую стоимость корзины и выводит это значение на страницу.
+*/
+  calculateAndRenderTotalBasketSum() {
+    let totalSum = 0;
+    for (let productId in basket) {
+      totalSum += basket[productId] * products[productId].price;
+    }
+    basketTotalValueEl.textContent = totalSum.toFixed(2);
+
+  }
+
+}
+
+
 
 //1. вызываем конструктор
 const list = new ProductList();

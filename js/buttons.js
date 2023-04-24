@@ -12,7 +12,7 @@ function addEventListenersForAddToCartButtons() {
 
 function add_product_to_cart(event) {
     const productId = event.currentTarget.getAttribute('data-productId');
-    addProductIntoCart(productId);
+    addProductIntoCart(productId, event);
 };
 
 addEventListenersForAddToCartButtons()
