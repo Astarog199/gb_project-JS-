@@ -60,32 +60,5 @@ class ProductItem {
 }
 
 
-class Cart_List extends ProductItem {
-  constructor(title, price, id, foto) {
-
-    this.myfunc()
-    this.calculateAndRenderTotalBasketSum()
-  }
-  myfunc() {
-    console.log(this.title);
-    console.log(this.price);
-  }
-
-  /**
-* Функция пересчитывает общую стоимость корзины и выводит это значение на страницу.
-*/
-  calculateAndRenderTotalBasketSum() {
-    let totalSum = 0;
-    for (let productId in basket) {
-      totalSum += basket[productId] * products[productId].price;
-    }
-    basketTotalValueEl.textContent = totalSum.toFixed(2);
-
-  }
-
-}
-
-
-
 //1. вызываем конструктор
 const list = new ProductList();
