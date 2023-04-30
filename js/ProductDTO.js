@@ -1,33 +1,64 @@
+const API = 'https://raw.githubusercontent.com/Astarog199/online-store-api/main/';
+
+
+
+// function getRequest(url, callback) {
+//   var xhr;
+//   if (window.XMLHttpRequest) {
+//     xhr = new XMLHttpRequest();
+//   } else if (window.ActiveXObject) {
+//     xhr = new ActiveXObject("Microsoft.XMLHTTP");
+//   }
+//   xhr.onreadystatechange = function () {
+//     if (xhr.readyState === 4) {
+//       callback(xhr.responseText);
+//     }
+//   }
+//   xhr.open('GET', url, true);
+//   xhr.send();
+// }
+
+
+
+
 class ProductList {
+  #goods;
+  #allProducts;
+
   constructor(container = '.products') {
     this.container = container;
-    this._goods = [];
-    this._allProducts = [];
+    this.#goods = [];
+    this.#allProducts = [];
 
-    this._fetchGoods(); //2.обращаемся к массиву с товарами
-    this._render(); //3. обращаемся к функции render
+    this.#fetchGoods().then((data) => {
+      this.#goods = data;
+      this.#render();
+    }); //2.обращаемся к массиву с товарами
   }
 
-  _fetchGoods() {
-    this._goods = [
-      { id: 1, foto: 'img src="style/pictures/catalog/AppleEarPods(1).jpg"', title: 'Apple BYZ S852I', price: 2927 },
-      { id: 2, foto: 'img src="style/pictures/catalog/AppleEarPods(3).jpg"', title: 'Apple EarPods', price: 100 },
-      { id: 3, foto: 'img src="style/pictures/catalog/AppleEarPods(2).jpg"', title: 'Apple EarPods', price: 2327 },
-      { id: 4, foto: 'img src="style/pictures/catalog/AppleEarPods(1).jpg"', title: 'Apple BYZ S852I', price: 3527 },
-      { id: 5, foto: 'img src="style/pictures/catalog/AppleEarPods(3).jpg"', title: 'Apple EarPods', price: 232 },
-      { id: 6, foto: 'img src="style/pictures/catalog/AppleEarPods(2).jpg"', title: 'Apple EarPods', price: 2327 },
-    ];
+  #fetchGoods() {
+    // getRequest(`${API}catalogDATA.json`, (data) => {
+    //   this.#goods = JSON.parse(data);
+    //   this._render(); //3. обращаемся к функции render
+    //   console.log(this.#goods);
+    // });
+
+
+    return fetch(`${API}catalogDATA.json`)
+      .then(response => response.json())
+      .catch((err) => console.log(err));
+
   }
 
   /**
    * метод перебирает массив товаров и добавляет  на страницу
    */
-  _render() {
+  #render() {
     const block = document.querySelector(this.container);
-    for (let product of this._goods) {
+    for (let product of this.#goods) {
       const productObject = new ProductItem(product); //передаёт параметры экзеземпляра в объект конструктора ProductItem
 
-      this._allProducts.push(productObject); // добавляет полученный экземпляр в переменную
+      this.#allProducts.push(productObject); // добавляет полученный экземпляр в переменную
       block.insertAdjacentHTML('beforeend', productObject.render()); //добавляет экземпляр на страницу
     }
   }
