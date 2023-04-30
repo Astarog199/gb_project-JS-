@@ -1,26 +1,5 @@
 const API = 'https://raw.githubusercontent.com/Astarog199/online-store-api/main/';
 
-
-
-// function getRequest(url, callback) {
-//   var xhr;
-//   if (window.XMLHttpRequest) {
-//     xhr = new XMLHttpRequest();
-//   } else if (window.ActiveXObject) {
-//     xhr = new ActiveXObject("Microsoft.XMLHTTP");
-//   }
-//   xhr.onreadystatechange = function () {
-//     if (xhr.readyState === 4) {
-//       callback(xhr.responseText);
-//     }
-//   }
-//   xhr.open('GET', url, true);
-//   xhr.send();
-// }
-
-
-
-
 class ProductList {
   #goods;
   #allProducts;
@@ -30,24 +9,38 @@ class ProductList {
     this.#goods = [];
     this.#allProducts = [];
 
-    this.#fetchGoods().then((data) => {
-      this.#goods = data;
-      this.#render();
-    }); //2.обращаемся к массиву с товарами
+    this.#fetchGoods()
   }
 
   #fetchGoods() {
-    // getRequest(`${API}catalogDATA.json`, (data) => {
-    //   this.#goods = JSON.parse(data);
-    //   this._render(); //3. обращаемся к функции render
-    //   console.log(this.#goods);
-    // });
 
+    const promise = new Promise(function (resolve) {
+      function getRequest(url, callback) {
+        var xhr;
+        if (window.XMLHttpRequest) {
+          xhr = new XMLHttpRequest();
+        } else if (window.ActiveXObject) {
+          xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            callback(xhr.responseText);
+          }
+        }
+        xhr.open('GET', url, true);
+        xhr.send();
+      }
 
-    return fetch(`${API}catalogDATA.json`)
-      .then(response => response.json())
-      .catch((err) => console.log(err));
+      getRequest(`${API}catalogDATA.json`, (data) => {
+        let goods = JSON.parse(data);
+        resolve(goods)
+      });
+    })
 
+    promise.then((goods) => {
+      this.#goods = goods
+      this.#render();
+    })
   }
 
   /**
@@ -62,8 +55,6 @@ class ProductList {
       block.insertAdjacentHTML('beforeend', productObject.render()); //добавляет экземпляр на страницу
     }
   }
-
-
 }
 
 class ProductItem {
@@ -89,7 +80,6 @@ class ProductItem {
           </div>`;
   }
 }
-
 
 //1. вызываем конструктор
 const list = new ProductList();
