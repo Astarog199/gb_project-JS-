@@ -1,7 +1,7 @@
 $color_orange: #FF9401;
 
 .content {
-
+    width: auto;
     background: #EAEAEA;
     display: flex;
     flex-direction: column;
@@ -11,7 +11,6 @@ $color_orange: #FF9401;
 .wrapped_products {
     display: flex;
 }
-
 
 .wrapped_banner {
     height: 197px;
@@ -47,26 +46,28 @@ $color_orange: #FF9401;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+}
 
+.product-item {
+    margin: 15px;
+    padding: 20px;
+    width: 350px;
+    height: 400px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    // align-items: center;
+}
 
-    .product-item {
-        margin: 15px;
-        padding: 20px;
-        width: 350px;
-        height: 400px;
-        background: #FFFFFF;
-        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-        border-radius: 30px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        // align-items: center;
-    }
+.show {
+    display: flex;
+}
 
-    .card_pictures {
-        width: 219px;
-        margin: auto;
-    }
+.card_pictures {
+    width: 219px;
+    margin: auto;
 }
 
 .like {

@@ -1,6 +1,6 @@
 // стили корзины
-
 .basket {
+
     position: absolute;
     z-index: 3;
     right: 0;
@@ -12,7 +12,7 @@
     font-size: 14px;
 }
 
-.hidden {
+.invisible {
     display: none;
 }
 
@@ -57,4 +57,30 @@
     font-size: 24px;
     line-height: 29px;
     color: #f16d7f;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .product-bio {
+        display: flex;
+        align-items: center;
+    }
+
+    .product-desc {
+        margin-left: 75px;
+    }
+
+    .right-block {
+        width: 100px;
+        display: flex;
+        justify-content: space-around;
+    }
+
+}
+
+.cart_pictures {
+    width: 100px;
 }
