@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test_app</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .textAfterInput {
+            display: none;
+            color: red;
+        }
+    </style>
+
+    <!--  Форма обратной связи с полями: Имя, Телефон, E-mail, текст, кнопка Отправить. -->
+    <form action=#>
+        Имя:<input class="InputValueUser name" name="nameUser" type="text" placeholder="Ваше имя"> <br>
+
+        Телефон:<input class="InputValueUser phone" name="phoneUser" type="tel" placeholder="+7(000)000-0000"> <br>
+
+        email:<input class="InputValueUser email" name="emailUser" type="email" placeholder="mymail@mail.ru"> <br>
+
+        <p class="textAfterInput" name="text_nameUser"></p>
+
+        Ваш отзыв:<textarea name="TextFromUser" id="" cols="30" rows="10"></textarea> <br>
+        Согласие с правилами:<input type="checkbox" name="" id="">
+
+        <button type="submit">submit</button>
+        <button type="reset">reset</button>
+
+    </form>
+
+    <script>
+        const class_nameUser = document.querySelector('.textAfterInput');
+        const text_nameUser = document.querySelector('p[name="text_nameUser"]');
+
+
+
+        function addEventFor_buttonSubmit(event) {
+            let ButtonSubmit = document.querySelector('button[type="submit"]');
+            ButtonSubmit.addEventListener('click', filter)
+        }
+        /**
+        * фильтр поля ввода имени
+        */
+        let nameFilter = function (event) {
+            const InputValueUserName = document.querySelector('.name');
+            const nameUser = document.querySelector('input[name="nameUser"]').value;
+
+            const lengthMore = nameUser === '';
+            const digitsPresented = /[0-9]+/gm.test(nameUser);
+            const lettersPresented = /[а-яА-ЯёЁ]+/gm.test(nameUser);
+
+            if (lettersPresented) {
+                InputValueUserName.style.borderColor = 'green';
+            } else if (digitsPresented) {
+                class_nameUser.style.display = "block";
+                text_nameUser.innerText = "В именги не должно быть цифр";
+                InputValueUserName.style.borderColor = 'red';
+                event.preventDefault();
+            } else if (lengthMore) {
+                class_nameUser.style.display = "block";
+                text_nameUser.innerText = "Введите имя";
+                InputValueUserName.style.borderColor = 'red';
+                event.preventDefault();
+
+            } else {
+                class_nameUser.style.display = "block";
+                text_nameUser.innerText = "ошибка имени: поле ввода имени должно содержать только буквы кириллицы.";
+                InputValueUserName.style.borderColor = 'red';
+                event.preventDefault();
+            };
+        }
+
+        /**
+        * фильтр поля ввода телефона
+        */
+
+        let phoneFilter = function (event) {
+            const InputValueUserPhone = document.querySelector('.phone');
+            const InputValuePhoneUser = document.querySelector('input[name="phoneUser"]').value;
+
+            const lengthMore11 = InputValuePhoneUser.length > 11;
+            if (InputValuePhoneUser !== '' && lengthMore11) {
+
+
+                InputValueUserPhone.style.borderColor = 'green';
+                const PhoneUser = InputValuePhoneUser.match(/\d+/g).join('');
+            } else {
+                class_nameUser.style.display = "block";
+                text_nameUser.innerText = "Проверьте номер телефона";
+                event.preventDefault();
+            }
+        }
+
+        /**
+        * фильтр поля ввода почты
+        */
+
+        let emailFilter = function (event) {
+            const InputValueUserEmail = document.querySelector('.email');
+            const emailUser = document.querySelector('input[name="emailUser"]').value;
+
+            const emailFilter = /[a-zA-Z0-9]/gm.test(emailUser);
+            const emailFilter_2 = /\@/g.test(emailUser);
+            const emailFilter_3 = /\./g.test(emailUser);
+            if (emailFilter && emailFilter_2 && emailFilter_3) {
+                InputValueUserEmail.style.borderColor = 'green';
+
+            } else {
+                class_nameUser.style.display = "block";
+                text_nameUser.innerText = "проверьте почту";
+                InputValueUserEmail.style.borderColor = 'red';
+                event.preventDefault();
+            }
+        }
+
+        function filter(event) {
+            nameFilter(event);
+            phoneFilter(event);
+            emailFilter(event);
+            // class_nameUser.style.display = "block";
+            // class_nameUser.style.Color = "green";
+            // text_nameUser.innerText = "Спасибо за отзыв";
+        }
+
+
+        addEventFor_buttonSubmit()
+    </script>
+
+    <script src="test_app.js"></script>
+</body>
+
+</html>
